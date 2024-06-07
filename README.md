@@ -3,8 +3,8 @@
 Paduan Download dan Install Dependensi yang dibbutuhkan dengan cara dibawah
 
 ```sh
-git clone https://github.com/ahmdsk/BackendNodeJSMongoDB
-cd BackendNodeJSMongoDB
+git clone https://github.com/MuhammadWiman/pemro-3-nodeJS-rest-API.git
+cd pemro-3-nodeJS-rest-API
 npm install
 nodemon server.js
 ```
