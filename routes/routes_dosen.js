@@ -1,40 +1,40 @@
 const express = require("express");
-const Mahasiswa = require("../models/Mahasiswa");
-const router = express.Router();
+const Dosen = require("../models/Dosen");
+const router_dosen = express.Router();
 
-router.get("/getMahasiswa", async (req, res) => {
+router_dosen.get("/dosen", async (req, res) => {
   try {
-    const mahasiswa = await Mahasiswa.find();
-    res.json(mahasiswa);
+    const dosen = await Dosen.find();
+    res.json(dosen);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-router.post("/mahasiswa", async (req, res) => {
+router_dosen.post("/dosen", async (req, res) => {
   try {
-    const mahasiswa = new Mahasiswa({
+    const dosen = new Dosen({
       nama: req.body.nama,
-      npm: req.body.npm,
-      prodi: req.body.prodi,
+      matkul_diampu: req.body.matkul_diampu,
+      alamat: req.body.alamat,
     });
-    const addMahasiswa = await mahasiswa.save();
+    const addDosen = await dosen.save();
     res.json({
       pesan: "Input Data Berhasil",
-      data: addMahasiswa,
+      data: addDosen,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-router.put("/edit/:id", async (req, res) => {
+router_dosen.put("/dosen/edit/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const body = req.body;
 
-    const editMahasiswa = await Mahasiswa.findByIdAndUpdate(id, body);
-    const getId = await Mahasiswa.findById(id);
+    const editDosen = await Dosen.findByIdAndUpdate(id, body);
+    const getId = await Dosen.findById(id);
 
     res.json({
       message: "Berhasil update data",
@@ -44,10 +44,10 @@ router.put("/edit/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-router.delete("/delete/:id", async (req, res) => {
+router_dosen.delete("/dosen/delete/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const deleteMahasiswa = await Mahasiswa.findByIdAndDelete(id);
+    const deleteDosen = await Dosen.findByIdAndDelete(id);
 
     res.json({
       message: "Data Berhasil di hapus",
@@ -56,4 +56,4 @@ router.delete("/delete/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-module.exports = router;
+module.exports = router_dosen;
