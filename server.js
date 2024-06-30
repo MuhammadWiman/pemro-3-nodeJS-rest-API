@@ -1,7 +1,6 @@
 const express = require("express");
 const router = require("./routes/routes");
-const router_dosen = require("./routes/routes_dosen");
-const cors=require("cors");
+const cors = require("cors");
 const app = express();
 
 app.use(express.json());
@@ -19,16 +18,18 @@ database.once("connected", () => {
   console.log("Connected to MongoDB");
 });
 
+const corsOptions = {
+  origin: 'http://localhost:8080', // Ganti dengan asal yang Anda inginkan
+  optionsSuccessStatus: 200
+};
 
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
+app.use(cors(corsOptions));
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
+// Rute dan middleware lainnya
+app.get('/jsapi.php', (req, res) => {
+  res.json({ message: 'Hello from server' });
+});// Use this after the variable declaration
 app.use("/", router);
-app.use("/", router_dosen);
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
