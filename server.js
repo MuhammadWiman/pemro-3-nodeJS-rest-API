@@ -1,22 +1,29 @@
 const express = require("express");
 const router = require("./routes/routes");
 const cors = require("cors");
+const connectDB = require('./database/db');
 const app = express();
 
+//use database Atlas =======
+connectDB();
+//==========================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://0.0.0.0:27017/belajar_mongodb2");
-const database = mongoose.connection;
+//use database Local
 
-database.on("error", (error) => {
-  console.log("Failed to connect to MongoDB: ", error);
-});
+// const mongoose = require("mongoose");
 
-database.once("connected", () => {
-  console.log("Connected to MongoDB");
-});
+// mongoose.connect("mongodb://0.0.0.0:27017/belajar_mongodb2");
+// const database = mongoose.connection;
+
+// database.on("error", (error) => {
+//   console.log("Failed to connect to MongoDB: ", error);
+// });
+
+// database.once("connected", () => {
+//   console.log("Connected to MongoDB");
+// });
 
 const corsOptions = {
   origin: 'http://localhost:8080', // Ganti dengan asal yang Anda inginkan
