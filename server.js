@@ -38,6 +38,6 @@ app.get('/jsapi.php', (req, res) => {
 });// Use this after the variable declaration
 app.use("/", router);
 
-app.listen(8000, () => {
+app.listen(8080, () => {
   console.log("Server is running on port 8080");
 });
