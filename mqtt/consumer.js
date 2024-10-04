@@ -8,7 +8,7 @@ let sensorData = null; // Module-scoped variable to store sensor data
 
 mqttClient.on("connect", () => {
   console.log("Connected to MQTT broker");
-  mqttClient.subscribe("routing_wiman&fadiah", (err) => {
+  mqttClient.subscribe("data/sensor", (err) => {
     if (err) {
       console.error("Subscription error:", err);
     }
