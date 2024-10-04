@@ -1,11 +1,11 @@
-const host = "103.167.112.188";
-const port = "15675";
+const host = "s77d0011.ala.dedicated.gcp.emqxcloud.com";
+const port = "8083";
 
 const urlMQTT = `ws://${host}:${port}/ws`;
 
 const mqttConfig = {
-  username: "/iot:kelas_edp",
-  password: "kelas_edp",
+  username: "/sidikdik12:sidikdik12",
+  password: "wiman123",
   clientId: `wiman_${new Date().getTime().toString()}`,
   protocolId: "MQTT",
 };
